@@ -1,0 +1,34 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`polymer-qrcode`
+
+
+@demo demo/index.html 
+-->
+
+<dom-module id="polymer-qrcode">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'polymer-qrcode',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'polymer-qrcode',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
