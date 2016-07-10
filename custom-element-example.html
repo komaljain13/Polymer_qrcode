@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            background:grey;
+        }
+        h1 {
+            color: #006064;
+        }
+    </style>
+    <script src="./bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+</head>
+<body>
+
+<!--<video src="http://craftymind.com/factory/html5video/BigBuckBunny_640x360.mp4" controls></video>-->
+<template id="profileTemplate" >
+    <style>
+        div{
+            background-color: yellow;
+            width: auto;
+            height: auto;
+        }
+        h1 {
+            color: #859900;
+        }
+    </style>
+    <div class="container">
+        <h1> Hello Everyone I am under Shadow DOM!!!</h1>
+        <div class="profile">
+            <div class="data">Komal Jain</div>
+            <div class="data">@komaljain1392</div>
+        </div>
+    </div>
+    <content></content>
+</template>
+
+
+
+<div>
+    <h1>Heading of Page</h1>
+    <user-profile></user-profile>
+    <h1>End of Page</h1>
+</div>
+
+
+
+<script>
+    var template = document.querySelector('#profileTemplate');
+    var myElementProto= Object.create(HTMLElement.prototype);
+    myElementProto.createdCallback=function(){
+        var template = document.querySelector('#profileTemplate');
+        var shadow = this.createShadowRoot() ;
+        shadow.appendChild( template.content.cloneNode(true) );
+    };
+    myElementProto.name="custom component"
+    window.MyElement = document.registerElement('user-profile', {
+        prototype: myElementProto
+    });
+
+
+</script>
+
+</body>
+</html>

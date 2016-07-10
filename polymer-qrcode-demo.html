@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <script src="./bower_components/qrjs/qr.js"></script>
+    <script src="./bower_components/qr-code/index.js"></script>
+    <link rel="import" href="./bower_components/polymer/polymer.html">
+    <link rel="import" href="./bower_components/paper-input/paper-input.html">
+</head>
+<body>
+
+<dom-module id="polymer-qrcode1">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        <h2>Generating QR-CODE for : [[prop1]]</h2>
+        <paper-input aria-label="Enter Data" value="{{prop1}}"></paper-input>
+        <paper-input label="Module size - 'scalable' size if set to 0"
+                     id="modulesize"
+                     type="number"
+                     value="5"
+                     oninput="document.querySelector('qr-code').modulesize = this.value"
+                     min=0
+                     max=30
+                     onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                ></paper-input>
+        <paper-input label="Margin"
+                     id="margin"
+                     type="number"
+                     value="4"
+                     oninput="document.querySelector('qr-code').margin = this.value"
+                     min=0
+                     max=30
+                     onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                ></paper-input>
+        <qr-code data="{{prop1}}"></qr-code>
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'polymer-qrcode1',
+            properties: {
+                prop1: {
+                    type: String,
+                    value: 'Komal Jain'
+                }
+            },
+            ready: function () {
+                // do some task when component is ready.
+            }
+
+        });
+    </script>
+</dom-module>
+
+<polymer-qrcode1></polymer-qrcode1>
+</body>
+</html>
